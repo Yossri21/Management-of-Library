@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if not members %}
+    no result
+{% endif %}
+
+    <ul>
+{% for member in members %}
+    <li><a href="{% url 'member_detail' member.pk %}">{{member.username}}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

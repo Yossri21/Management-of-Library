@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if not books %}
+    no result
+{% endif %}
+
+{% for book in books %}
+
+    <a href="{% url 'details' book.pk %}">{{book.title}}</a>
+{% endfor %}
+{% endblock%}

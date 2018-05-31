@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+ <span class="glyphicon glyphicon-user"> {{librarian.username}} </span>
+
+  <hr>
+
+<hr>
+    <br>
+     <div class="container">
+       <table class="table table-bordered">
+<form action="" method="post">
+    {% csrf_token %}
+
+    {{form}}
+    <div align="center">
+<input type="submit" value="ok">
+
+</div>
+
+</form>
+ </table>
+</div>
+
+
+{% endblock %}
+

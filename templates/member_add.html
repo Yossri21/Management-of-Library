@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    {% if group in user.groups.all %}
+
+    <button> <a href="{% url 'member_list' %}"> List of users </a> </button>
+
+        <br><br><br>
+
+        <form action="{% url 'member_search' %}">
+    <input type="text" name='q'>
+    <input type="submit" value="seach">
+</form>
+<br><br><br>
+
+
+<form  action="" method="post">
+    {% csrf_token %}
+
+<table>
+    <tr>
+        <td><label for="id_username" style="font-family:roboto;font-weight:bold;color:crimson;size: 25px;text-decoration: underline;">Username:</label></td>
+        <td><input type="text" name="username" maxlength="150" autofocus required id="id_username" style="border-color:darkviolet;border-style:solid;"></td>
+
+    </tr>
+    <tr>
+    <td><label for="id_first_name" style="font-family:roboto;font-weight:bold;color:crimson;size: 25px;text-decoration: underline;">First name:</label></td>
+        <td><input type="text" name="first_name" maxlength="50" required id="id_first_name"  style="border-color:darkviolet;border-style:solid;"></td>
+    </tr>
+    <tr>
+        <td><label for="id_last_name" style="font-family:roboto;font-weight:bold;color:crimson;size: 25px;text-decoration: underline;">Last name:</label></td>
+        <td><input type="text" name="last_name" maxlength="50" required id="id_last_name" style="border-color:darkviolet;border-style:solid;" ></td>
+    </tr>
+    <tr>
+        <td><label for="id_email" style="font-family:roboto;font-weight:bold;color:crimson;size: 25px;text-decoration: underline;">Email:</label></td>
+        <td><input type="text" name="email" maxlength="50" required id="id_email"  style="border-color:darkviolet;border-style:solid;" ></td>
+    </tr>
+    <tr>
+        <td><label for="id_password1" style="font-family:roboto;font-weight:bold;color:crimson;size: 25px;text-decoration: underline;">Password:</label></td>
+        <td><input type="password" name="password1" required id="id_password1" style="border-color:darkviolet;border-style:solid;" ></td>
+
+    <tr>
+    <td><label for="id_password2" style="font-family:roboto;font-weight:bold;color:crimson;size: 25px;text-decoration: underline;">Password confirmation:</label></td>
+    <td><input type="password" name="password2" required id="id_password2" style="border-color:darkviolet;border-style:solid;"></td>
+    </tr>
+
+    <tr>
+
+</table>
+    <button style=" background-color: white;
+    color: blue;
+    border: 2px solid navy;
+    font-size: 30px;
+	cursor:pointer;" ><span style="">Add Member</span></button>
+</form>
+
+    {% endif %}
+
+{% endblock %}

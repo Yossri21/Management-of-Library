@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3> You can choose the details by click on the name of user </h3>
+
+<ul>
+{% for member in members %}
+<li>
+
+
+        <a href="{% url 'member_detail' member.pk %}">
+          <span class="glyphicon glyphicon-user"></span>
+        </a>
+     {{member.username}}
+
+    <form action="{% url 'member_delete' member.pk %}">
+       <button class="btn btn-danger"> Delete </button>
+    </form>
+</li>
+{% endfor %}
+</ul>
+
+
+
+{% endblock %}

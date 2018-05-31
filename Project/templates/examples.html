@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div style="border-style:solid;">
+                    <table>
+                        <center><h3 style="font-family:verdana;color:darkred;font-weight:bold">{{det.title }}</h3></center>
+
+                         <center><img src="{{ det.image.url }}" height="100" style="box-shadow:2px" /></center>
+
+                        <center><P style="font-weight:bold;color:crimson;font-size:15px;" >  Author :  {{ det.author }}</P></center>
+                          <center> <a style="color:#f0ad4e;font-weight:bold;font-size:20px;" href="{{det.pdf.url}}"> Read or Download book</a></center><br>
+
+                        {% if group in user.groups.all%}
+<div style="border-style:dashed;padding:20px;margin-bottom:20px;margin-left:20px;margin-right:20px;">
+                            <P style="font-family:verdana;color:mediumblue;font-weight:bold;font-size:15px"> ISBN : <p style="color:black;font-weight:bold;size:15px;">{{ det.isbn }}</p> </P>
+                        {% for gen in det.genre.all %}
+                            <p style="font-family:verdana;color:mediumblue;font-weight:bold;font-size:15px">  Genre :<p style="color:black;font-weight:bold;size:15px;"> {{ gen.name }}</p></p>
+                        {% endfor %}
+                            <P style="font-family:verdana;color:mediumblue;font-weight:bold;font-size:15px"> Language :<p style="color:black;font-weight:bold;size:15px;"> {{ det.language }}</p></p>
+                    {% endif %}
+
+                           <p style="font-family:verdana;color:mediumblue;font-weight:bold;font-size:15px"> Resume :<p style="color:black;font-weight:bold;size:15px;"> {{ det.summary|truncatechars:100 }}</p></p>
+                           <P style="font-family:verdana;color:mediumblue;font-weight:bold;font-size:15px"> number of copies : <p style="color:black;font-weight:bold;size:15px;"> {{ det.copies}}</p> </P>
+                        </div>
+                    </table>
+
+</div>
+
+
+    {% if borrowed_book %}
+
+    <form action="{% url 'book_return' det.pk %}" method="post">
+        {% csrf_token %}
+         The Date of reservation :
+
+        {{borrowed_book.date}}
+         <br> You must make it Back before :   {{borrowed_book.due_back}}
+       <br> <button class="btn btn-danger"> Return </button>
+
+    </form>
+
+
+
+    {% else %}
+    <form action="{% url 'book_borrow' det.pk %}" method="post">
+        {% csrf_token %}
+<br>
+        <button class="btn btn-danger"> Brower The Book </button>
+
+    </form>
+
+    {% endif %}
+<br> <br>
+
+
+    <form action="{% url 'book_comment' det.pk %}" method="post">
+        {% csrf_token %}
+        {{commentform}}
+
+        <input type="submit" class="btn btn-success" value="add comment">
+
+    </form>
+
+
+ <hr>
+
+    <div>
+    {% for comment in comments %}
+
+        <p> {{comment.comment_author}}  <span class="glyphicon glyphicon-user"></span></p>
+    <p>{{comment.content}}</p>
+    {% endfor %}
+</div>
+
+
+
+ {% if group in user.groups.all %}
+     <div>
+
+    <button type="button" class="btn btn-info"> <a href="{% url 'book_update' det.pk %}"> Make an Update </a> </button>
+     <br>
+     <br>
+
+     <form action="{% url 'delete' det.id %}" method="post">
+                {% csrf_token %}
+         <button class="btn btn-danger">   Delete   </button>
+
+            </form>
+
+    {% endif %}
+</div>
+{% endblock %}
+

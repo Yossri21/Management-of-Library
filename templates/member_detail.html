@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<table>
+<tr>
+ <td><font style="font-weight:bold;color:Teal;text-decoration:underline;font-size:20px;"> USERNAME: </font> </td>
+<td>{{member.username}}</td>
+</tr>
+
+<tr>
+  <td> <font style="font-weight:bold;color:Teal;text-decoration:underline;font-size:20px;"> FIRST Name : </font> </td>
+  <td>{{ member.first_name }}</td>
+</tr>
+<tr>
+  <td><font style="font-weight:bold;color:Teal;text-decoration:underline;font-size:20px;"> Last NAME: </font></td>
+  <td>  {{ member.last_name }} </td>
+</tr>
+<tr>
+
+   <td><font style="font-weight:bold;color:Teal;text-decoration:underline;font-size:20px;"> Email: </font>
+   <td>{{ member.email }}</td>
+</tr>
+</table>
+
+<hr>
+    <br>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="ok">
+</form>
+
+{% endblock %}

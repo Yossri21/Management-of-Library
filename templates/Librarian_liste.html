@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3> You can choose the details by click on the name of user </h3>
+
+
+{% for i in librarian  %}
+
+    <p>
+        <a href="{% url 'librarian_update' i.pk %}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-user"></span> {{i.username}}
+        </a>
+      </p>
+   <br>
+    <form action="{% url 'librarian_delete' i.pk %}">
+        <button class="btn btn-danger"> Delete </button>
+    </form>
+
+    <br>
+
+{% endfor %}
+
+{% endblock %}

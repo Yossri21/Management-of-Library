@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flat Login Form</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+<link rel="stylesheet" href= "{% static 'ind.css' %}" type="text/css" />
+
+
+</head>
+<body>
+<div class="container">
+  <div class="info">
+    <h1>Sign up</h1>
+  </div>
+</div>
+<div class="form">
+  <div class="thumbnail">
+  <img src={% static "book.png "%} alt="10"  height="60" width="100" />
+
+  </div>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <tr><th><label style="font-family:verdana;color:darkred;font-weight:bold" for="id_username">Username:</label></th><td><input type="text" name="username" maxlength="150" autofocus required id="id_username" /><br /><span class="helptext"></span></td></tr>
+<tr><th><label style="font-family:verdana;color:darkred;font-weight:bold" for="id_first_name">First name:</label></th><td><input type="text" name="first_name" maxlength="50" required id="id_first_name" /></td></tr>
+<tr><th><label style="font-family:verdana;color:darkred;font-weight:bold" for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" maxlength="50" required id="id_last_name" /></td></tr>
+<tr><th><label style="font-family:verdana;color:darkred;font-weight:bold" for="id_email">Email:</label></th><td><input type="text" name="email" maxlength="50" required id="id_email" /></td></tr>
+<tr><th><label style="font-family:verdana;color:darkred;font-weight:bold" for="id_password1">Password:</label></th><td><input type="password" name="password1" required id="id_password1" /><br /><span class="helptext"><ul><li></li><li></li><li></li><li></li></ul></span></td></tr>
+<tr><th><label style="font-family:verdana;color:darkred;font-weight:bold" for="id_password2">Password confirmation:</label></th><td><input type="password" name="password2" required id="id_password2" /><br /><span class="helptext"></span></td></tr>
+    <input  type="submit" value="register" style="background-color:red;" />
+
+</form>
+    </div>
+<video id="video" autoplay="autoplay" loop="loop" poster="polina.jpg">
+  <source src="http://andytran.me/A%20peaceful%20nature%20timelapse%20video.mp4" type="video/mp4"/>
+</video>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> The Free Librarian </title>
+   <link rel="stylesheet" href= "{% static 'styles.css' %}" type='text/css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+
+<body>
+<div id="container">
+	<div class="header" style="border-style:solid;border-color:black;background-color: #761c19;">
+    	<h6 style="text-align:center;font-size:70px ;padding-top:20px;color: #FFFFFF;" >YAGOURIEN LIBRARY </h6>
+
+        <div class="clear"></div>
+    </div>
+    <div id="nav">
+    	<ul>
+        	<li><a href=" {% url 'home' %}">Home</a></li>
+            <li><a href="#">Examples</a></li>
+            <li><a href="#">Solutions</a></li>
+            <li><a href="{% url 'librarian_liste' %}">Librarian</a></li>
+            <li><a href="{% url 'member_add' %}"> Members </a></li>
+        <li class="dropdown">
+
+
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;
+                            Profile {{ user.username }}
+
+                        </a>
+                </li>
+
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">logout</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div id="body">
+		<div id="content">
+
+
+           <center> <h1>Welcome to this website </h1></center>
+
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+        <div class="sidebar">
+            <ul>
+               <li>
+                    <h4><span>Navigate</span></h4>
+                    <ul class="blocklist">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Examples</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Solutions</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li class="dropdown">
+
+
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;
+                            Profile {{ user.username }}
+
+                        </a>
+                </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h4>About</h4>
+                    <ul>
+                        <li>
+                        	<p style="margin: 0;">Aenean nec massa a tortor auctor sodales sed a dolor. Duis vitae lorem sem. Proin at velit vel arcu pretium luctus.</p>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                	<h4>Search</h4>
+                    <ul>
+                    	<li>
+                            <form method="get" class="searchform" action="{% url 'book_search' %}" >
+                                <p>
+                                    <input type="text" size="22" value="" name="q" class="s" />
+                                    <input type="submit" class="searchsubmit formbutton" value="Search" />
+                                </p>
+                            </form>
+						</li>
+					</ul>
+                </li>
+
+                <li>
+                    <h4>Sponsors</h4>
+                    <ul>
+                        <li><a href="http://www.themeforest.net/?ref=spykawg" title="premium templates"><strong>ThemeForest</strong></a> - premium HTML templates, WordPress themes and PHP scripts</li>
+                        <li><a href="http://www.dreamhost.com/r.cgi?259541" title="web hosting"><strong>Web hosting</strong></a> - 50 dollars off when you use promocode <strong>awesome50</strong></li>
+                        <li><a href="http://www.4templates.com/?aff=spykawg" title="4templates"><strong>4templates</strong></a> - brilliant premium templates</li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    	<div class="clear"></div>
+    </div>
+</div>
+<div id="footer">
+    <div class="footer-content">
+    	  <center><div class="footer-width" style="padding-left:200px">
+
+         <p style="color:white;">the best website to read any time you want</p>
+
+         </div></center>
+    </div>
+
+
+</div>
+</body>
+</html>

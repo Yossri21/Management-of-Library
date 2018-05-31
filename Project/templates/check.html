@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+        <table class="table table-striped table-inverse">
+
+  <thead>
+    <tr>
+      <th> User </th>
+        <th> Book </th>
+      <th> Date of reservation </th>
+      <th> The Deadline to back </th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in ch %}
+      <td>  {% for gen in i.borrower.all %}
+
+            <a href="{% url 'member_detail' gen.pk %}" > {{gen}}
+        </a>
+     {{member.username}}
+                        {% endfor %}  </td>
+      <td> {{ i.book}} </td>
+      <td> {{ i.date }} </td>
+    <td> {{ i.due_back }} </td>
+    </tr>
+  </tbody>
+         {% endfor %}
+</table>
+
+
+{% endblock %}
